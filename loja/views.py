@@ -14,6 +14,7 @@ def home(request):
 
             # Salvando o novo produto no banco de dados
             novo_produto.save()
+            # Aparece esse aviso ao cadastrar um produto com sucesso
             return render(request, 'produtos/home.html', {'message': 'Produto cadastrado com sucesso!'})
 
     # Se não for um POST, renderiza o formulário vazio
