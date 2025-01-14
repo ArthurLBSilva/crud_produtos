@@ -16,15 +16,27 @@
           <span class="navbar-brand mb-0 h1">Aerotur</span>
         </div>
       </nav>
-      <!-- <form action="{% url 'listagem_produtos' %}" method="post"> -->
+      <form action="{% url 'home' %}" method="post"> 
+        <!--Tem que ter isso para conseguir renderizar a pagina-->
+        {% csrf_token %}
         <div style="text-align: center;"class="container">
             <h1>Cadastro de produtos</h1>
-            Nome <input name = "nome_produto" class="form-control-sm"type="text">
-            Preço <input name = "preco_produto" class="form-control-sm" type="text">
-            Quantidade em estoque <input name = "qtd_estoque" class="form-control-sm" type="number" step="1">
-            <button class="form-control-sm"> Enviar </button>
-      </div> 
-    <!-- </form> -->
+            <!--required mostra o aviso para não deixar salvar sem valor nulo-->
+            Nome <input name = "nome_produto" class="form-control-sm"type="text" required>
+            Preço: <input name="preco_produto" class="form-control-sm" type="number" step="0.01" min="0" required>
+            Quantidade em estoque <input name = "qtd_estoque" class="form-control-sm" type="number" step="1" required>
+            <button type="submit" name="cadastrar_produto" class="form-control-sm">Cadastrar Produto</button>     
+        </div> 
+    </form> 
+    <!-- Mensagem de sucesso ou erro, caso haja -->
+    {% if message %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+
+<!-- Botão para ir para a listagem de produtos -->
+<a href="{% url 'listagem_produtos' %}" class="btn btn-primary">Ver Listagem de Produtos</a>
 
 
     <!-- Optional JavaScript; choose one of the two! -->
