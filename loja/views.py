@@ -11,6 +11,7 @@ def home(request):
             novo_produto.nome = request.POST.get('nome_produto')
             novo_produto.preco = request.POST.get('preco_produto')
             novo_produto.quantidade_estoque = request.POST.get('qtd_estoque')
+            
 
             # Salvando o novo produto no banco de dados
             novo_produto.save()
@@ -22,7 +23,8 @@ def home(request):
 
 def listagem(request):
     # Obtém todos os produtos cadastrados no banco de dados
-    produtos = Produto.objects.all()
-
-    # Renderiza a página de listagem e passa os produtos como contexto
-    return render(request, 'produtos/listagem.html', {'produtos': produtos})
+    produtos = {
+        'produtos' : Produto.objects.all()
+    }
+    # Retorna os dados para a pagina de listagem
+    return render(request, 'produtos/listagem.html', produtos)
