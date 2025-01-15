@@ -43,3 +43,24 @@ def excluir_produto(request, id):
         'message': f'O produto "{produto.nome}" foi excluído com sucesso!'
     }
     return render(request, 'produtos/listagem.html', produtos)
+
+def editar_produto(request, id):
+    # Recupera o produto pelo ID
+    produto = get_object_or_404(Produto, id_produto=id)
+    mensagem = None 
+    if request.method == 'POST':
+        # Atualiza os dados do produto com base no formulário enviado
+        produto.nome = request.POST.get('nome_produto')
+        produto.preco = request.POST.get('preco_produto')
+        produto.quantidade_estoque = request.POST.get('qtd_estoque')
+        
+        # Salva as alterações no banco de dados
+        produto.save()
+        
+        # Redireciona para a página inicial com mensagem de sucesso
+        # Define a mensagem de sucesso
+        mensagem = "Produto atualizado com sucesso!"
+    
+    # Renderiza a página de edição, passando os dados do produto e a mensagem
+    return render(request, 'produtos/editar_produto.html', {'produto': produto, 'mensagem': mensagem})
+    

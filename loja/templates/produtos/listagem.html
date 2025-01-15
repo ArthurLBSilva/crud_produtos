@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,10 +56,17 @@
             <td>{{ produto.quantidade_estoque }}</td>
             <td>{{ produto.data_criacao }}</td>
             <td class="action-buttons">
-              <button class="btn-action">Editar</button>
+
+              <!-- Botão para editar o produto -->
+              <a href="{% url 'editar_produto' produto.id_produto %}" class="btn-action btn btn-primary">
+                Editar
+              </a>
+              
+              <!-- Botão para excluir o produto -->
               <a href="{% url 'excluir_produto' produto.id_produto %}" class="btn-action btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluir este produto?');">
                 Excluir
               </a>
+
             </td>
           </tr>
           {% endfor %}
