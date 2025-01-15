@@ -1,7 +1,8 @@
+<!-- Precisa ter esse load para arquivos estaticos, sem ele não funciona -->
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,109 +12,27 @@
     <!-- Fonte Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Estilizacao do home -->
+    <link rel="stylesheet" href="{% static 'css/home_estilizacao.css' %}">
+
     <title>Cadastro de Produtos</title>
-    <style>
-      /* Fonte personalizada */
-      body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #f4f6f8; /* Fundo suave */
-        margin: 0;
-      }
-      /* Navbar estilizada */
-      .navbar {
-        background-color: #004466 !important; /* Azul-escuro elegante */
-      }
-      .navbar .navbar-brand {
-        color: #ffffff;
-        font-weight: 500;
-      }
-      /* Botão no canto superior direito */
-      .top-right-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-      /* Centralizar o formulário */
-      .form-container {
-        display: flex;
-        justify-content: center;  /* Centraliza horizontalmente */
-        align-items: center;
-        min-height: 80vh; /* Preenche a tela */
-      }
-      /* Formulário com bordas arredondadas e sombra */
-      .form-container .container {
-        background: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        width: 100%;
-        max-width: 600px;
-      }
-      /* Espaçamento e largura dos inputs */
-      .espacamento {
-        margin-bottom: 15px;
-      }
-      input, button {
-        width: 100%;
-      }
-      /* Botão estilizado */
-      .btn-success {
-        background-color: #004466;
-        border-color: #004466;
-      }
-      .btn-success:hover {
-        background-color: #006699;
-        border-color: #006699;
-      }
-      /* Link estilizado */
-      .btn-primary {
-        background-color: #0077cc;
-        border-color: #0077cc;
-      }
-      .btn-primary:hover {
-        background-color: #005bb5;
-        border-color: #005bb5;
-      }
-      /* Estilo do alerta */
-      .alert {
-        background-color: #004466;
-        color: #ffffff;
-        border: none;
-        opacity: 0; /* Inicialmente invisível */
-        animation: fadeInOut 6s; /* 6 segundos para fade in e out */
-      }
-      @keyframes fadeInOut {
-        0% {
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-    </style>
+
   </head>
   <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">Loja</span>
         <!-- Botão no canto superior direito -->
-        <a href="{% url 'listagem_produtos' %}" class="btn btn-primary top-right-button">Ver Listagem de Produtos</a>
+        <a href="{% url 'listagem_produtos' %}" class="btn btn-listagem top-right-button">Ver Listagem de Produtos</a>
       </div>
     </nav>
     
     <!-- Formulário centralizado -->
     <div class="form-container">
       <form action="{% url 'home' %}" method="post"> 
+        <!--Precisa desse csrf_token se não, não da pra renderizar a pagina-->
           {% csrf_token %}
           <div class="container">
-              <!-- Imagem fictícia -->
               <h2 class="text-center mb-4">Cadastro de Produtos</h2>
               <div class="mb-3 espacamento">
                 <label for="nomeProduto" class="form-label">Nome</label>
@@ -128,7 +47,7 @@
                 <input name="qtd_estoque" class="form-control" type="number" step="1" min="0" required>
               </div>
               <div class="text-center">
-                <button type="submit" name="cadastrar_produto" class="btn btn-success">Cadastrar Produto</button>
+                <button type="submit" name="cadastrar_produto" class="btn btn-produto">Cadastrar Produto</button>
               </div>
           </div>
       </form> 
@@ -143,13 +62,13 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
-      // Remover o alerta automaticamente após 5 segundos
+      // Remover o alerta automaticamente após 3 segundos
       setTimeout(() => {
         const alert = document.getElementById('success-alert');
         if (alert) {
           alert.style.display = 'none';
         }
-      }, 5000);
+      }, 3000);
     </script>
   </body>
 </html>

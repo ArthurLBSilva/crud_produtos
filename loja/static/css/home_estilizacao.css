@@ -1,0 +1,86 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f8; /* Fundo suave */
+    margin: 0;
+  }
+  /* Navbar estilizada */
+  .navbar {
+    background-color: #004466 !important; /* Azul-escuro elegante */
+  }
+  .navbar .navbar-brand {
+    color: #ffffff;
+    font-weight: 500;
+  }
+  /* Botão no canto superior direito */
+  .top-right-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  /* Centralizar o formulário */
+  .form-container {
+    display: flex;
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center;
+    min-height: 80vh; /* Preenche a tela */
+  }
+  /* Formulário com bordas arredondadas e sombra */
+  .form-container .container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+  }
+  /* Espaçamento e largura dos inputs */
+  .espacamento {
+    margin-bottom: 15px;
+  }
+  input, button {
+    width: 100%;
+  }
+  /* Botão estilizado */
+  .btn-produto {
+    background-color: #004466;
+    border-color: #004466;
+    color: white;
+  }
+  .btn-produto:hover {
+    background-color: #006699;
+    border-color: #006699;
+    color: white;
+  }
+  /* Link estilizado */
+  .btn-listagem {
+    background-color: rgb(0, 75, 150);
+    border-color: rgb(0, 75, 150);
+    color: white;
+  }
+  .btn-listagem:hover {
+    background-color:rgb(2, 45, 76);
+    border-color: rgb(2, 45, 76);
+    color: white;
+  }
+  /* Estilo do alerta */
+  .alert {
+    background-color: #004466;
+    color: #ffffff;
+    border: none;
+    opacity: 0; /* Inicialmente invisível */
+    animation: fadeInOut 3s; /* Quantidade de tempo que aparece o aviso */
+  }
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
