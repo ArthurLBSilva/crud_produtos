@@ -1,0 +1,55 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+  }
+  .navbar {
+    background-color: #004466 !important;
+  }
+  .navbar .navbar-brand {
+    color: #ffffff;
+    font-weight: 500;
+  }
+  .top-right-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(0, 75, 150);
+    border-color: rgb(0, 75, 150);
+    color: white;
+  }
+  .top-right-button:hover {
+    background-color: rgb(2, 45, 76);
+    border-color: rgb(2, 45, 76);
+    color: white;
+  }
+  table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  th {
+    background-color: #004466;
+    text-align: center;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .btn-action {
+    background-color: #004466;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .btn-action:hover {
+    background-color: #006699;
+  }
