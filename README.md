@@ -1,2 +1,2 @@
 # crud_produtos
- Código focado na tela de cadastro-produto, todas as principais alterações estão nos comitts.
+ Código focado na tela de cadastro, todas as principais alterações estão nos comitts.
