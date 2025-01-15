@@ -1,8 +1,9 @@
 from django.urls import path
 from loja import views
 urlpatterns = [
-    # caminho para a tela inicial
-    path('', views.home, name='home'),
-    # caminho para a tela de listagem
-    path('listagem/', views.listagem, name='listagem_produtos')
+    path('', views.home, name='home'), # Cadastro de produtos, tela inicial
+    
+    path('listagem/', views.listagem, name='listagem_produtos'), # Listagem de produtos
+    
+    path('produto/excluir/<int:id>/', views.excluir_produto, name='excluir_produto'),  # Excluir produto
 ]

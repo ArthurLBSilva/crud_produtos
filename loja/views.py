@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect 
+from django.shortcuts import get_object_or_404, redirect
 from .models import Produto
 
 def home(request):
@@ -26,5 +27,19 @@ def listagem(request):
     produtos = {
         'produtos' : Produto.objects.all()
     }
-    # Retorna os dados para a pagina de listagem
+    # O render() serve para processar um template HTML diretamente e retornar a resposta
+    return render(request, 'produtos/listagem.html', produtos)
+
+def excluir_produto(request, id):
+    # Busca o produto pelo ID ou retorna um erro 404 se não for encontrado
+    produto = get_object_or_404(Produto, id_produto=id)
+    
+    # Exclui o produto do banco de dados
+    produto.delete()
+    
+    # Renderiza a página de listagem com uma mensagem de sucesso
+    produtos = {
+        'produtos': Produto.objects.all(),
+        'message': f'O produto "{produto.nome}" foi excluído com sucesso!'
+    }
     return render(request, 'produtos/listagem.html', produtos)

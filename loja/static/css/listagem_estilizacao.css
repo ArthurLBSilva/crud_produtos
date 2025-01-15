@@ -53,3 +53,34 @@ body {
   .btn-action:hover {
     background-color: #006699;
   }
+
+  #busca-input{
+    border-radius: 5px !important;
+    border-color: #0d79ae !important;
+  }
+  #filtros-busca{
+    border-radius: 5px !important;
+    border-color: #0d79ae !important;
+  }
+  
+  .alert {
+    background-color: #004466;
+    color: #ffffff;
+    border: none;
+    opacity: 0; /* Inicialmente invisível */
+    animation: fadeInOut 3s; /* Quantidade de tempo que aparece o aviso */
+  }
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
