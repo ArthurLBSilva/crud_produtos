@@ -22,13 +22,19 @@
     <nav class="navbar navbar-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">Loja</span>
-        <!-- Botão no canto superior direito -->
         <a href="{% url 'home' %}" class="btn btn-listagem top-right-button">Cadastrar Produto</a>
       </div>
     </nav>
 
-    <!-- Tabela de Produtos -->
+    <!-- Pesquisa -->
     <div class="container mt-4">
+      <div class="search-container">
+        <input type="text" id="busca-input" placeholder="Buscar">
+        <select id="filtros-busca">
+          <option value="name">Nome</option>
+          <option value="price">Preço</option>
+        </select>
+      </div>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -40,34 +46,63 @@
             <th>Ações</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="product-table">
           {% for produto in produtos %}
           <tr>
             <td>{{ produto.id_produto }}</td>
-            <td>{{ produto.nome }}</td>
-            <td>{{ produto.preco }}</td>
+            <td class="product-name">{{ produto.nome }}</td>
+            <td class="product-price">{{ produto.preco }}</td>
             <td>{{ produto.quantidade_estoque }}</td>
             <td>{{ produto.data_criacao }}</td>
             <td class="action-buttons">
-              <!-- Ícones de ação -->
-              <!-- Ícone para editar -->
-              <button class="btn-action">
-                <!-- Adicione o caminho do ícone de editar aqui -->
-                <!-- Exemplo: <img src="{% static 'icons/edit-icon.svg' %}" alt="Editar"> -->
-                Editar
-              </button>
-              <!-- Ícone para excluir -->
-              <button class="btn-action">
-                <!-- Adicione o caminho do ícone de excluir aqui -->
-                <!-- Exemplo: <img src="{% static 'icons/delete-icon.svg' %}" alt="Excluir"> -->
-                Excluir
-              </button>
+              <button class="btn-action">Editar</button>
+              <button class="btn-action">Excluir</button>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
+
+    <script>
+        const searchInput = document.getElementById('busca-input');
+        const searchFilter = document.getElementById('filtros-busca');
+        const tableRows = document.querySelectorAll('#product-table tr');
+      
+        searchInput.addEventListener('input', () => {
+          const filterValue = searchInput.value.trim().toLowerCase();
+          const filterType = searchFilter.value;
+      
+          tableRows.forEach(row => {
+            const nameCell = row.querySelector('.product-name').textContent.toLowerCase();
+            const priceCell = parseFloat(row.querySelector('.product-price').textContent);
+      
+            // Exibir todos os produtos se o campo de entrada estiver vazio
+            if (filterValue === '') {
+              row.style.display = '';
+              return;
+            }
+      
+            if (filterType === 'name') {
+              // Verifica se começa com o valor digitado e não permite números
+              if (!isNaN(filterValue) || !nameCell.startsWith(filterValue)) {
+                row.style.display = 'none';
+              } else {
+                row.style.display = '';
+              }
+            } else if (filterType === 'price') {
+              // Mostra apenas produtos com preço exatamente igual ao valor digitado
+              const filterPrice = parseFloat(filterValue);
+              if (isNaN(filterPrice) || priceCell !== filterPrice) {
+                row.style.display = 'none';
+              } else {
+                row.style.display = '';
+              }
+            }
+          });
+        });
+      </script>
+      
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
