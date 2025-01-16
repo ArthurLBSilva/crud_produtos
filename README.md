@@ -24,7 +24,8 @@ Um sistema simples de gerenciamento de produtos (CRUD) desenvolvido com Django e
    
 2. **Crie e ative um ambiente virtual**
    
-    - • No Windows: python -m venv .venv
+    - No Windows:
+    -  python -m venv .venv
     - .\Scripts\activate
 
 4. **Instale a dependencia**
