@@ -19,40 +19,47 @@
 
   </head>
   <body>
+    <!-- Navbar no topo da página com o título da loja e botão de navegação -->
     <nav class="navbar navbar-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">Loja</span>
-        <!-- Botão no canto superior direito -->
+        <!-- Botão no canto superior direito, link para a página de listagem de produtos-->
         <a href="{% url 'listagem_produtos' %}" class="btn btn-listagem top-right-button">Listagem Produtos</a>
       </div>
     </nav>
     
     <!-- Formulário centralizado -->
     <div class="form-container">
+      <!-- Formulário para cadastrar um produto, enviando dados via POST -->
       <form action="{% url 'home' %}" method="post"> 
         <!--Precisa desse csrf_token se não, não da pra renderizar a pagina-->
           {% csrf_token %}
           <div class="container">
               <h2 class="text-center mb-4">Cadastro de Produtos</h2>
+              <!-- Campo para inserir o nome do produto -->
               <div class="mb-3 espacamento">
                 <label for="nomeProduto" class="form-label">Nome</label>
                 <input name="nome_produto" class="form-control" type="text" maxlength="100" required>
               </div>
+               <!-- Campo para inserir o preço do produto -->
               <div class="mb-3 espacamento">
                 <label for="precoProduto" class="form-label">Preço</label>
                 <input name="preco_produto" class="form-control" type="number" step="0.01" min="0" required>
               </div>
+              <!-- Campo para inserir a quantidade em estoque -->
               <div class="mb-3 espacamento">
                 <label for="qtdEstoque" class="form-label">Quantidade em Estoque</label>
                 <input name="qtd_estoque" class="form-control" type="number" step="1" min="0" required>
               </div>
+              <!-- Botão para enviar o formulário -->
               <div class="text-center">
                 <button type="submit" name="cadastrar_produto" class="btn btn-produto">Cadastrar</button>
               </div>
           </div>
       </form> 
     </div>
-
+    
+    <!-- Alerta de sucesso exibido após cadastrar um produto -->
     {% if message %}
         <div id="success-alert" class="alert alert-success mt-3 text-center" role="alert">
             {{ message }}

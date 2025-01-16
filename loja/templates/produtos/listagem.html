@@ -18,15 +18,16 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
+    <!-- Navbar com título da loja e botão para cadastro de produtos -->
     <nav class="navbar navbar-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">Loja</span>
+        <!-- Link para a página de cadastro de produtos -->
         <a href="{% url 'home' %}" class="btn btn-listagem top-right-button">Cadastrar Produto</a>
       </div>
     </nav>
 
-    <!-- Pesquisa -->
+    <!-- Pesquisa e filtros-->
     <div class="container mt-4">
       <div class="search-container">
         <input type="text" id="busca-input" placeholder="Buscar">
@@ -36,6 +37,7 @@
         </select>
       </div>
       <br>
+      <!-- Tabela para exibir a listagem de produtos -->
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -48,6 +50,7 @@
           </tr>
         </thead>
         <tbody id="product-table">
+          <!-- Loop para exibir os produtos cadastrados -->
           {% for produto in produtos %}
           <tr>
             <td>{{ produto.id_produto }}</td>
@@ -74,12 +77,14 @@
       </table>
     </div>
 
+    <!-- Alerta de sucesso após uma ação, como exclusão -->
     {% if message %}
     <div id="success-alert" class="alert alert-success mt-3 text-center" role="alert">
         {{ message }}
     </div>
   {% endif %}
     
+    <!-- Script para implementar a funcionalidade de busca -->
     <script>
         const searchInput = document.getElementById('busca-input');
         const searchFilter = document.getElementById('filtros-busca');
