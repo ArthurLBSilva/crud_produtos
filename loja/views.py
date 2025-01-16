@@ -6,21 +6,29 @@ def home(request):
     if request.method == 'POST':
         # Verifica se o botão de Cadastrar Produto foi clicado
         if 'cadastrar_produto' in request.POST:
-            novo_produto = Produto()
+            nome_produto = request.POST.get('nome_produto')
+            preco_produto = request.POST.get('preco_produto')
+            qtd_estoque = request.POST.get('qtd_estoque')
 
-            # Atribuindo os valores obtidos do formulário
-            novo_produto.nome = request.POST.get('nome_produto')
-            novo_produto.preco = request.POST.get('preco_produto')
-            novo_produto.quantidade_estoque = request.POST.get('qtd_estoque')
-            
+            # Verifica se já existe um produto com o mesmo nome
+            if Produto.objects.filter(nome=nome_produto).exists():
+                mensagem_erro = "Já existe um produto com esse nome. Por favor, escolha outro nome."
+                return render(request, 'produtos/home.html', {'message': mensagem_erro})
 
-            # Salvando o novo produto no banco de dados
+            # Cria o novo produto se não existir
+            novo_produto = Produto(
+                nome=nome_produto,
+                preco=preco_produto,
+                quantidade_estoque=qtd_estoque
+            )
             novo_produto.save()
-            # Aparece esse aviso ao cadastrar um produto com sucesso
+
+            # Mensagem de sucesso
             return render(request, 'produtos/home.html', {'message': 'Produto cadastrado com sucesso!'})
 
     # Se não for um POST, renderiza o formulário vazio
     return render(request, 'produtos/home.html')
+
 
 def listagem(request):
     # Obtém todos os produtos cadastrados no banco de dados

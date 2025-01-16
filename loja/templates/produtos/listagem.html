@@ -54,7 +54,7 @@
             <td class="product-name">{{ produto.nome }}</td>
             <td class="product-price">{{ produto.preco }}</td>
             <td>{{ produto.quantidade_estoque }}</td>
-            <td>{{ produto.data_criacao }}</td>
+            <td>{{ produto.data_criacao|date:"d/m/Y"}}</td>
             <td class="action-buttons">
 
               <!-- Botão para editar o produto -->
