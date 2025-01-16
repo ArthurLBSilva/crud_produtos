@@ -11,7 +11,7 @@ Um sistema simples de gerenciamento de produtos (CRUD) desenvolvido com Django e
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Backend:** Django 4.x, Python 3.11.9  
+- **Backend:** Django, Python 3.11.9  
 - **Frontend:** Bootstrap, HTML e CSS personalizados  
 - **Banco de Dados:** SQLite (padrão do Django)
 
