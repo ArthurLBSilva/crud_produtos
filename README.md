@@ -41,22 +41,27 @@ Um sistema simples de gerenciamento de produtos (CRUD) desenvolvido com Django e
 6. **Acesse a aplicação no navegador pelo link: http://127.0.0.1:8000/**
 
 ## 📁 Estrutura do Projeto
--- **• crud_produtos/**
+
+- **• crud_produtos/**
 Diretório principal contendo configurações e estrutura do projeto Django. 
--- **• loja/**
-Aplicação principal onde estão as views, models e templates. 
--- **• templates/**
-Diretório com os arquivos HTML para renderização das páginas. 
--- **• static/**
+
+- **• loja/**
+Aplicação principal onde estão as views, models e templates.
+
+- **• templates/**
+Diretório com os arquivos HTML para renderização das páginas.
+
+- **• static/**
 Arquivos de estilo (CSS) e outros recursos estáticos.
 
 ## 🗃️ Banco de Dados 
--- • O projeto utiliza o banco de dados SQLite. 
--- • O banco já está configurado e não é necessário criar um novo. 
--- • Caso deseje resetar, use o comando: python manage.py flush
+   • O projeto utiliza o banco de dados SQLite. 
+   • O banco já está configurado e não é necessário criar um novo. 
+   • Caso deseje resetar, use o comando: python manage.py flush
 
 ## ⚠️ Observações 
--- • Não há testes automatizados implementados. 
--- • Nenhuma licença foi atribuída ao projeto. 
--- • Se precisar de ajustes ou informações adicionais, avise!
+
+ • Não há testes automatizados implementados. 
+ • Nenhuma licença foi atribuída ao projeto. 
+ • Se precisar de ajustes ou informações adicionais, avise!
 
