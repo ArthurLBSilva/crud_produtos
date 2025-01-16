@@ -24,21 +24,22 @@ Um sistema simples de gerenciamento de produtos (CRUD) desenvolvido com Django e
    
 2. **Crie e ative um ambiente virtual**
    
-    • No Windows: python -m venv .venv .\Scripts\activate
+    - • No Windows: python -m venv .venv
+    - .\Scripts\activate
 
-3. **Instale as dependências**
+4. **Instale a dependencia**
 
-   • pip install -r requirements.txt
+   • pip install django
 
-4. **Aplique as migrações do banco de dados**
+5. **Aplique as migrações do banco de dados**
    
    • python manage.py migrate
 
-5. **Execute o servidor**
+6. **Execute o servidor**
  
    • python manage.py runserver
    
-6. **Acesse a aplicação no navegador pelo link: http://127.0.0.1:8000/**
+7. **Acesse a aplicação no navegador pelo link: http://127.0.0.1:8000/**
 
 ## 📁 Estrutura do Projeto
 
