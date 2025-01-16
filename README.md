@@ -19,8 +19,8 @@ Um sistema simples de gerenciamento de produtos (CRUD) desenvolvido com Django e
 
 1. **Clone o repositório:**
 
-   - git clone https://github.com/seu-usuario/seu-repositorio.git
-   - cd seu-repositorio
+   - git clone https://github.com/ArthurLBSilva/crud_produtos.git
+   - cd crud_produtos
    
 2. **Crie e ative um ambiente virtual**
    
